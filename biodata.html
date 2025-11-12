@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Biodata - febrien</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&family=Righteous&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --accent:#e50012;
+      --accent-dark:#b3000f;
+      --panel:#111;
+      --muted:#cfcfcf;
+      --glass: rgba(255,255,255,0.04);
+    }
+    html,body{height:100%;margin:0;font-family:Montserrat,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial}
+    body{
+      background: linear-gradient(180deg,#070707 0%, #0f0f0f 100%);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      display:flex;align-items:center;justify-content:center;padding:32px;
+    }
+    .frame{
+      width:100%;max-width:980px;border-radius:12px;overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,0.6);position:relative;
+      background: radial-gradient(600px 300px at 10% 10%, rgba(229,0,18,0.06), transparent 10%), linear-gradient(90deg,#070707 0%, #0f0f0f 100%);
+      border:3px solid rgba(229,0,18,0.12);
+    }
+    .frame:before{
+      content:"";position:absolute;left:-40%;top:0;width:160%;height:120px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-dark));
+      transform:skewY(-6deg);transform-origin:left top;
+      box-shadow:0 6px 30px rgba(229,0,18,0.18);
+    }
+    .container{display:grid;grid-template-columns:340px 1fr;gap:28px;padding:36px}
+    .profile{
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
+      border-radius:12px;padding:22px;position:relative;border:2px solid rgba(255,255,255,0.03);
+    }
+    .avatar{
+      width:100%;height:260px;border-radius:8px;overflow:hidden;
+      border:4px solid var(--accent);
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;}
+    .name{margin-top:14px;font-weight:800;font-size:22px;letter-spacing:0.6px;color:#fff;text-transform:uppercase}
+    .role{font-size:12px;color:var(--accent);font-weight:600;margin-top:6px}
+    .meta{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+    .meta .chip{background:var(--glass);padding:8px 10px;border-radius:8px;font-size:13px;border:1px solid rgba(255,255,255,0.02)}
+    .right{padding:18px 0;}
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:10px;margin-bottom:18px;border:1px solid rgba(255,255,255,0.03);
+    }
+    .card h3{margin:0;font-family:Righteous,serif;color:#fff;letter-spacing:1px}
+    .bio{margin-top:10px;color:var(--muted);line-height:1.5}
+    .stats{display:flex;gap:10px;margin-top:12px}
+    .stat{flex:1;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:12px;border-radius:8px;text-align:center;border:1px solid rgba(255,255,255,0.02)}
+    .stat .num{font-weight:800;font-size:20px;color:#fff}
+    .stat .label{font-size:12px;color:var(--muted);margin-top:6px}
+    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+    .skill{padding:10px;border-radius:8px;background:linear-gradient(90deg, rgba(229,0,18,0.06), transparent);border:1px solid rgba(229,0,18,0.06);font-weight:600}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;text-transform:uppercase;border:none;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,0.5);transition:transform .12s ease}
+    .btn:active{transform:translateY(2px)}
+    .tagline{font-weight:700;color:var(--accent);margin-top:8px}
+    @media (max-width:880px){.container{grid-template-columns:1fr;}.avatar{height:220px}}
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="container">
+      <div class="profile">
+        <div class="avatar">
+          <img src="foto.jpg" alt="Foto Profil">
+        </div>
+        <div class="name">Febrien Siemensa Putra</div>
+        <div class="role">EXP Lane</div>
+        <div class="meta">
+          <div class="chip">Umur: 20</div>
+          <div class="chip">Kota: Pangkal Pinang</div>
+          <div class="chip">Email: Febrien270205@mail.com</div>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:10px;align-items:center;justify-content:space-between">
+          <button class="btn" onclick="toggleFlip()">Lihat Detail</button>
+          <div class="code-tag">ID: 2025-095</div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="card">
+          <h3>Profil Singkat</h3>
+          <div class="bio">Apa saja selain Tugas.</div>
+          <div class="tagline">"Nothing Is true, Everything Is permitted"</div>
+        </div>
+
+        <div class="card flip-wrap">
+          <div id="flip" class="flip-card">
+            <div class="flip-face">
+              <h3>Statistik</h3>
+              <div class="stats">
+                <div class="stat"><div class="num">85</div><div class="label">HP</div></div>
+                <div class="stat"><div class="num">76</div><div class="label">MANA</div></div>
+                <div class="stat"><div class="num">66</div><div class="label">STAMINA</div></div>
+                <div class="stat"><div class="num">54</div><div class="label">ATK</div></div>
+              </div>
+            </div>
+            <div class="flip-face flip-back">
+              <h3>Pengalaman & Pendidikan</h3>
+              <ul style="color:var(--muted);margin-top:10px;line-height:1.6">
+                <li>Ngedit Foto Halu</li>
+                <li>Menang Argumen Lawan Tetangga</li>
+                <li>ALL Perfect DIFF Master 29 Di Game Project Sekai</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Keterampilan</h3>
+          <div class="skills">
+            <div class="skill">Masak</div>
+            <div class="skill">Desain(kalo ngak males)</div>
+            <div class="skill">Menyelam Di akun fb orang</div>
+            <div class="skill">Rage Baiter Boomer</div>
+            <div class="skill">Speed Runner (pemula)</div>
+            <div class="skill">Photoshop</div>
+          </div>
+        </div>
+
+        <div class="card" style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-size:12px;color:var(--muted)">Portofolio</div>
+            <div style="font-weight:800;color:#fff">github.com/febrien270</div>
+          </div>
+          <div>
+            <button class="btn" onclick="downloadCard()">Unduh CV</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="halftone"></div>
+    <div class="eyes" aria-hidden>
+      <span class="eye"></span><span class="eye"></span><span class="eye"></span>
+    </div>
+  </div>
+
+  <script>
+    function toggleFlip(){
+      document.getElementById('flip').classList.toggle('is-flipped');
+    }
+    function downloadCard(){
+      const text = `Nama: Nama Lengkap\nPeran: Pengembang Web\nEmail: contoh@mail.com\n\nRingkasan: Saya developer web...`;
+      const blob = new Blob([text],{type:'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'CV.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
